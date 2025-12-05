@@ -1,0 +1,514 @@
+/* styles.css : typographie et couleurs améliorées pour header & footer (v7 fusionnée)
+   + styles pour HERO large, section mission, CTA band et footer compact.
+   Notes : remplacez / ajustez les valeurs (--primary, etc.) pour personnaliser. */
+
+/* -------------------------
+   Variables de couleurs
+   ------------------------- */
+:root {
+  --bg: #f8fafc;
+  --text-dark: #0f172a;       /* couleur principale sombre (texte) */
+  --muted: #6b7280;
+  --primary: #1170c8;
+  --primary-dark: #0b6ea6;
+  --white: #ffffff;
+  --footer-bg: #0b1220;       /* footer très sombre (utilisé si besoin) */
+  --footer-text: #e6eef8;     /* texte clair pour footer (si fond sombre) */
+  --spacing-lg: 3rem;
+}
+
+/* -------------------------
+   Polices
+   - Poppins pour en-têtes / header / footer
+   - Inter pour le contenu / paragraphes
+   ------------------------- */
+body {
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.7; /* plus aéré pour le confort visuel */
+}
+
+/* Titres, brand et éléments importants */
+h1, h2, h3, h4, h5, h6, .brand-text, .nav-link, .cta-btn, .card-title {
+  font-family: "Poppins", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text-dark);
+  letter-spacing: 0.2px;
+}
+
+/* Améliorer lisibilité des liens */
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------
+   Header
+   ------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 70;
+  transition: background-color 240ms ease, box-shadow 240ms ease, padding 240ms ease;
+}
+
+/* état transparent (pour la home) */
+.header-transparent {
+  background: transparent;
+  box-shadow: none;
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+
+/* texte sur header transparent : blanc avec léger ombrage pour la lisibilité */
+.header-transparent .brand-text,
+.header-transparent .nav-link,
+.header-transparent .cta-btn {
+  color: var(--white) !important;
+  text-shadow: 0 6px 18px rgba(2,6,23,0.45);
+}
+
+/* état solide (white background) */
+.header-solid {
+  background: var(--white);
+  box-shadow: 0 6px 18px rgba(10, 15, 25, 0.06);
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+/* forcer couleur sombre sur état solide */
+.header-solid .brand-text,
+.header-solid .nav-link {
+  color: var(--text-dark) !important;
+}
+
+/* CTA bouton dans le header (amélioration contraste) */
+.cta-btn {
+  background: linear-gradient(180deg, var(--primary), #0d5aa8);
+  border: none;
+  color: var(--white) !important;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(13, 90, 168, 0.16);
+}
+
+/* Navbar toggler icon contrast */
+.header-transparent .navbar-toggler-icon {
+  filter: invert(1) brightness(3) contrast(1.2);
+}
+
+/* -------------------------
+   Footer (dark theme original)
+   ------------------------- */
+.site-footer {
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  padding-top: 2.5rem;
+  padding-bottom: 1.5rem;
+  margin-top: 3rem;
+  font-family: "Poppins", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Liens footer : texte clair, fortement contrasté */
+.site-footer a {
+  color: var(--footer-text);
+  opacity: 0.95;
+}
+.site-footer a:hover {
+  color: var(--white);
+  text-decoration: underline;
+  opacity: 1;
+}
+
+/* Texte et petites descriptions */
+.site-footer .text-muted, .site-footer small, .site-footer p {
+  color: rgba(230,238,248,0.9); /* légèrement plus pâle pour hiérarchie */
+}
+
+/* Newsletter input adapt - fond légèrement plus clair pour contraste */
+.site-footer .form-control {
+  max-width: 320px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--footer-text);
+}
+.site-footer .form-control::placeholder {
+  color: rgba(230,238,248,0.7);
+}
+
+/* Badge message success / error distincts */
+.site-footer .text-success {
+  color: #86efac !important; /* vert clair lisible sur fond foncé */
+}
+.site-footer .text-danger {
+  color: #ffb4b4 !important; /* rouge pale lisible */
+}
+
+/* -------------------------
+   Quelques ajustements généraux
+   ------------------------- */
+.card {
+  border-radius: 10px;
+}
+.card-img-top {
+  height: 160px;
+  object-fit: cover;
+}
+
+/* Hero title base style (utilisé par sections hero plus grandes) */
+.hero .display-4 {
+  font-family: "Poppins", "Inter", system-ui;
+  color: var(--white);
+  text-shadow: 0 8px 28px rgba(2,6,23,0.6);
+}
+
+/* Défilement doux (utile pour ancre) */
+html { scroll-behavior: smooth; }
+
+/* Responsive small tweaks */
+@media (max-width: 767px) {
+  .brand-text { font-size: 1rem; }
+  .cta-btn { padding: 0.45rem 0.85rem; font-size: 0.9rem; }
+  .site-footer .form-control { max-width: 100%; }
+}
+
+/* ======================================
+   HERO LARGE, MISSION, CTA BAND (nouveaux)
+   ====================================== */
+
+/* HERO: larger and more airy for better comfort */
+.hero-large,
+.hero {
+  min-height: 70vh; /* plus grand pour un impact visuel */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.hero-large .hero-overlay,
+.hero .hero-overlay {
+  position: absolute;
+  inset: 0;
+  /* overlay plus doux pour laisser voir davantage l'image (ajustable) */
+  background: linear-gradient(180deg, rgba(2,6,23,0.36) 0%, rgba(2,6,23,0.40) 100%);
+  z-index: 1;
+}
+.hero-large .hero-content,
+.hero .hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 5rem 1rem;
+  text-align: center;
+}
+
+/* TITRE très grand et confortable */
+.hero-title,
+.hero .display-1,
+.hero .display-4 {
+  font-size: clamp(2.4rem, 6vw, 4.4rem); /* très large, responsive */
+  line-height: 1.02;
+  font-weight: 700;
+  text-shadow: 0 12px 36px rgba(2,6,23,0.6);
+}
+
+/* Sous-titre (lead) plus lisible */
+.hero-lead {
+  font-size: 1.15rem;
+  opacity: 0.98;
+  margin-top: 1rem;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CTA spacing */
+.hero .btn {
+  padding: 0.8rem 1.25rem;
+  border-radius: 10px;
+  font-size: 1.05rem;
+}
+
+/* plus d'espace au scroll indicator */
+.hero .hero-arrow { margin-top: 2.5rem; }
+.arrow-down, .hero .arrow-down {
+  font-size: 22px;
+  color: rgba(255,255,255,0.95);
+  display: inline-block;
+  transition: transform 200ms ease;
+}
+.arrow-down:hover { transform: translateY(6px); }
+
+/* ======================================
+   SECTION MISSION (centrée comme photo #2)
+   ====================================== */
+.mission-section {
+  background: #ffffff;
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+}
+.mission-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* textes plus grands et plus aérés pour confort visuel */
+.mission-section .text-muted,
+.mission-section p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.9;
+}
+
+/* Grid for stats (right column) */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+.stat-box {
+  background: #fbfcfd;
+  border: 1px solid rgba(15,23,42,0.04);
+  padding: 28px 22px;
+  border-radius: 10px;
+  text-align: center;
+  min-height: 110px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 4px 18px rgba(12,20,30,0.03);
+}
+.stat-number {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--primary-dark); /* accent plus marqué */
+}
+.stat-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  color: #6b7280;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+/* Si vous voulez les trois boîtes empilées verticalement sur écran large,
+   gardez grid-template-columns: 1fr (comme la maquette). */
+
+/* ======================================
+   CTA BAND (bande bleue centrée)
+   ====================================== */
+.cta-band {
+  background: linear-gradient(180deg, var(--primary-dark), #0a5a8e);
+  color: white;
+  padding-top: 2.25rem;
+  padding-bottom: 2.25rem;
+}
+.cta-band h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: .25rem;
+}
+.cta-band p {
+  color: rgba(255,255,255,0.92);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+.btn-white-outline {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.95);
+  color: white;
+  padding: 0.55rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+}
+.btn-white-outline:hover {
+  background: rgba(255,255,255,0.06);
+  color: white;
+}
+
+/* ======================================
+   FOOTER COMPACT (clair) — pour image #2 exact look
+   ====================================== */
+.site-footer-compact {
+  background: #ffffff; /* fond clair */
+  color: #0f172a; /* texte foncé */
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+  padding-top: 3.25rem;
+  padding-bottom: 1.75rem;
+}
+
+/* Logos / Titres */
+.site-footer-compact h5,
+.site-footer-compact h6 {
+  font-size: 1.05rem;
+  color: #0b2938; /* deep blue-ish pour titres */
+  margin: 0;
+}
+
+/* paragraphes et muted text */
+.site-footer-compact p,
+.site-footer-compact .text-muted {
+  color: #6b7280; /* muted gray-blue like screenshot */
+  font-size: 0.98rem;
+}
+
+/* Social buttons: circular, light gray bg, icon centered */
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #f1f2f4; /* very light gray */
+  border: none;
+  text-decoration: none;
+  transition: transform 120ms ease, background 120ms ease;
+}
+.social-btn:hover {
+  transform: translateY(-3px);
+  background: #e6e7ea;
+}
+.social-btn svg { display: block; }
+
+/* Quick links list: chevron before each item, spacing like screenshot */
+.quick-links li {
+  margin-bottom: 12px;
+  padding-left: 0;
+}
+.quick-links li a {
+  position: relative;
+  display: inline-block;
+  color: #1f2937; /* darker for links */
+  text-decoration: none;
+  padding-left: 18px;
+  line-height: 1.6;
+}
+.quick-links li a::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #9aa2ab;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* Contact lines icons muted */
+.site-footer-compact .contact-lines svg { opacity: 0.9; }
+.site-footer-compact .contact-lines a { color: #475569; }
+
+/* Separator */
+.site-footer-compact hr {
+  border: none;
+  border-top: 1px solid rgba(15,23,42,0.04);
+  margin-top: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+/* Bottom row small text */
+.site-footer-compact .text-muted {
+  color: #94a3b8;
+}
+.site-footer-compact a[href*="github.com"] {
+  color: #475569;
+  text-decoration: none;
+}
+.site-footer-compact a[href*="github.com"]:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .hero-large .hero-content { padding: 3rem 1rem; }
+  .hero-title { font-size: clamp(1.6rem, 6vw, 2.8rem); }
+  .mission-section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+  .stat-box { min-height: 90px; padding: 20px; }
+  .social-btn { width: 40px; height: 40px; }
+}
+
+@media (max-width: 575px) {
+  .hero-large { min-height: 56vh; }
+  .hero-title { font-size: 1.6rem; }
+  .stat-box { padding: 16px; }
+  .brand-text { font-size: 0.95rem; }
+}
+
+/* small visual helper to highlight the mission center area */
+.mission-section .container { max-width: 1100px; margin: 0 auto; }
+
+
+
+/* -------------------------
+   Styles pour la page À propos
+   (à coller à la fin de src/styles.css)
+   ------------------------- */
+
+.about-hero {
+  background: linear-gradient(180deg, rgba(245,247,249,1), rgba(245,247,249,1));
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+/* featured image centre */
+.about-feature .featured-card {
+  max-width: 1100px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.about-feature img {
+  display: block;
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+}
+
+/* gallery cards */
+.gallery-card {
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+.gallery-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(12,20,30,0.08);
+}
+.gallery-img {
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+/* about cta */
+.about-cta {
+  background: linear-gradient(180deg, rgba(11,110,166,0.06), rgba(11,110,166,0.06));
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+/* Adaptations responsive */
+@media (max-width: 991px) {
+  .about-feature img { height: 340px; }
+  .gallery-img { height: 200px; }
+}
+@media (max-width: 575px) {
+  .about-feature img { height: 220px; }
+  .gallery-img { height: 160px; }
+}
+/* END of styles.css */
+
