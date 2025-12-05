@@ -1,14 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-/*
-  Footer exactly like the provided design (image 2).
-  - Two main columns: description/contact (left) and Liens Rapides (right).
-  - Social icons in circular light buttons.
-  - Contact lines with simple icons (email + location).
-  - Bottom row: copyright left, GitHub link right.
-  - Uses Bootstrap classes for layout; extra styles are in src/styles.css.
-*/
 export default function Footer() {
   return (
     <footer className="site-footer-compact bg-white text-dark pt-5">

@@ -1,19 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 
-/*
-  Header amélioré :
-  - transparent sur la page d'accueil, puis devient solide au scroll
-  - responsive via Bootstrap
-  - accessible (aria)
-  - simple logo SVG inline
-
-  NOTE: L'utilisateur souhaite que **seulement** les textes
-  "Réussites Tunisiennes", "Accueil" et "À propos" soient en NOIR,
-  sans changer les autres fichiers CSS. Pour garantir cela même si
-  les styles externes utilisent "!important", on applique ici une
-  règle inline avec priorité "important" via element.style.setProperty(..., 'important').
-*/
 export default function Header() {
   const location = useLocation();
   const isHome = location.pathname === "/";

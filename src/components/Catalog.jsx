@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchStories } from "../services/storiesApi";
+import SubmitStoryForm from "./SubmitStoryForm";
 
 /*
   Catalog (Accueil) amélioré :
@@ -8,6 +9,7 @@ import { fetchStories } from "../services/storiesApi";
   - Section "Mission" au centre avec texte à gauche et stats à droite
   - Bande CTA bleue avec bouton centré
   - Ensuite la grille des profils (id="profiles")
+  - Le formulaire SubmitStoryForm est inséré juste après le titre "Histoires remarquables"
 */
 export default function Catalog() {
   const [stories, setStories] = useState([]);
@@ -135,19 +137,12 @@ export default function Catalog() {
             <small className="text-muted">Parcourez les profils et découvrez leur parcours</small>
           </div>
         </div>
-
-        {loading && (
-          <div className="text-center py-5">
-            <div className="spinner-border text-primary" role="status" />
-            <div className="mt-2">Chargement...</div>
-          </div>
-        )}
-
         {error && (
           <div className="alert alert-danger" role="alert">
             {error}
           </div>
         )}
+        
 
         {!loading && !error && (
           <div className="row">
@@ -170,11 +165,22 @@ export default function Catalog() {
                         className="rounded-circle"
                         style={{ width: 48, height: 48, objectFit: "cover" }}
                       />
+                      
                     </div>
                   </div>
                 </div>
               </div>
             ))}
+                    {/* === INSERTION DU FORMULAIRE ICI (juste après le titre "Histoires remarquables") === */}
+        <SubmitStoryForm />
+        {/* === FIN INSERTION DU FORMULAIRE === */}
+
+        {loading && (
+          <div className="text-center py-5">
+            <div className="spinner-border text-primary" role="status" />
+            <div className="mt-2">Chargement...</div>
+          </div>
+        )}
           </div>
         )}
       </section>
